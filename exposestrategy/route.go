@@ -13,6 +13,7 @@ import (
 	"k8s.io/kubernetes/pkg/api/v1"
 	client "k8s.io/kubernetes/pkg/client/unversioned"
 	"k8s.io/kubernetes/pkg/runtime"
+	"fmt"
 )
 
 type RouteStrategy struct {
@@ -83,9 +84,12 @@ func (s *RouteStrategy) Add(svc *api.Service) error {
 	}
 	route.Labels["provider"] = "fabric8"
 
+
+
 	route.Spec = rapi.RouteSpec{
-		//Host: hostName,
+		Host: fmt.Sprintf("%s-%s.%s",  svc.Namespace, svc.Name, s.domain),
 		To:   rapi.RouteTargetReference{Name: svc.Name},
+		TLS:  &rapi.TLSConfig{Termination:"edge"},
 	}
 
 	var hostName string
