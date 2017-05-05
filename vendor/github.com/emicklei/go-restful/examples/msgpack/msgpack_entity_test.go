@@ -2,7 +2,7 @@ package restPack
 
 import (
 	"bytes"
-	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"net/http/httptest"
@@ -115,7 +115,7 @@ func waitForServerUp(serverURL string) error {
 			return nil
 		}
 	}
-	return errors.New("waiting for server timed out")
+	return fmt.Errorf("waiting for server timed out")
 }
 
 var (

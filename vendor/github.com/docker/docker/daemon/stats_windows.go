@@ -2,10 +2,13 @@ package daemon
 
 import (
 	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/container"
+	"github.com/opencontainers/runc/libcontainer"
 )
 
-// Windows network stats are obtained directly through HCS, hence this is a no-op.
-func (daemon *Daemon) getNetworkStats(c *container.Container) (map[string]types.NetworkStats, error) {
-	return make(map[string]types.NetworkStats), nil
+// convertStatsToAPITypes converts the libcontainer.Stats to the api specific
+// structs.  This is done to preserve API compatibility and versioning.
+func convertStatsToAPITypes(ls *libcontainer.Stats) *types.Stats {
+	// TODO Windows. Refactor accordingly to fill in stats.
+	s := &types.Stats{}
+	return s
 }

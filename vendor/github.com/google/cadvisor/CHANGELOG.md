@@ -1,7 +1,16 @@
 # Changelog
 
+### 0.23.4 (2016-06-16)
+- Cherry-pick release:
+  - Check for thin_is binary in path for devicemapper when using ThinPoolWatcher
+  - Fix uint64 overflow issue for CPU stats
+
+### 0.23.3 (2016-06-08)
+- Cherry-pick release:
+  - Cap the maximum consecutive du commands
+  - Fix a panic when a prometheus endpoint ends with a newline
+
 ### 0.23.2 (2016-05-18)
-- Final release for Kubernetes 1.3
 - Handle kernel log rotation
 - More rkt support: poll rkt service for new containers
 - Better handling of partial failures when fetching subcontainers
@@ -97,7 +106,7 @@
 - Enabled CPU load tracking (experimental).
 
 ## 0.11.0 (2015-03-27)
-- Export all stats as [Prometheus](https://prometheus.io/) metrics.
+- Export all stats as [Prometheus](http://prometheus.io/) metrics.
 - Initial support for [events](docs/api.md): creation, deletion, and OOM.
 - Adding machine UUID information.
 - Beta release of the cAdvisor [2.0 API](docs/api_v2.md).

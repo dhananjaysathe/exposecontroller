@@ -1,7 +1,5 @@
-// Protocol Buffers for Go with Gadgets
-//
-// Copyright (c) 2015, The GoGo Authors. All rights reserved.
-// http://github.com/gogo/protobuf
+// Copyright (c) 2015, Vastech SA (PTY) LTD. All rights reserved.
+// http://github.com/gogo/protobuf/gogoproto
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -43,7 +41,7 @@ func TestIssue42Order(t *testing.T) {
 		t.Fatal(err)
 	}
 	ordered := &OrderedFields{}
-	if err = proto.Unmarshal(udata, ordered); err != nil {
+	if err := proto.Unmarshal(udata, ordered); err != nil {
 		t.Fatal(err)
 	}
 	data, err := proto.Marshal(ordered)
