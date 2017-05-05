@@ -8,7 +8,7 @@ import:
 - package: github.com/spf13/pflag
 - package: k8s.io/kubernetes
   version: 52492b4bff99ef3b8ca617d385a3ff0612f9402d
-  repo: git://github.com/openshift/kubernetes.git
+  repo: https://github.com/openshift/kubernetes.git
   vcs: git
   subpackages:
   - pkg/api

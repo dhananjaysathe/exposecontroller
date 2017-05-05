@@ -85,11 +85,16 @@ func (s *RouteStrategy) Add(svc *api.Service) error {
 	route.Labels["provider"] = "fabric8"
 
 
-
 	route.Spec = rapi.RouteSpec{
 		Host: fmt.Sprintf("%s-%s.%s",  svc.Namespace, svc.Name, s.domain),
 		To:   rapi.RouteTargetReference{Name: svc.Name},
-		TLS:  &rapi.TLSConfig{Termination:"edge"},
+	}
+	switch svc.Annotations["expose_mode"] {
+	case "tls":
+		route.Spec.TLS = &rapi.TLSConfig{Termination:"edge"}
+	case "sni":
+		route.Spec.TLS = &rapi.TLSConfig{Termination:"edge"}
+		route.Labels["proto"] = "tcp"
 	}
 
 	var hostName string
